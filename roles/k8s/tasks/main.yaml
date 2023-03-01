@@ -1,0 +1,64 @@
+---
+- name: Disable Swap
+  command: swapoff -a
+  when: ansible_swaptotal_mb > 0
+
+- name: Remove SWAP from fstab
+  mount:
+    name: "{{ item }}"
+    fstype: swap
+    state: absent
+  with_items:
+    - swap
+    - none
+
+- name: Reduce Swappiness
+  ansible.posix.sysctl:
+    name: vm.swappiness
+    value: '0'
+    state: present
+
+- name: Add K8s GPG Key
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
+  register: add_repository_key
+
+- name: Add K8s Repo
+  apt_repository:
+    repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
+    state: present
+    update_cache: true
+
+- name: Install Kubeadm, Kubelet and Kubernetes-cni
+  ansible.builtin.apt:
+    update_cache: yes
+    pkg:
+      - kubelet
+      - kubeadm
+      - kubernetes-cni
+
+- name: Init Kubernetes Cluster
+  shell: kubeadm init --pod-network-cidr 10.244.0.0/16
+  args:
+    creates: "{{ k8s_admin_config }}"
+
+- name: Setup Kubeconfig for {{ k8s_user }} User
+  file:
+    path: "$HOME/.kube"
+    state: directory
+    owner: "{{ k8s_user }}"
+    group: "{{ k8s_user }}"
+    mode: 0750
+
+- name: Copy {{ k8s_admin_config }}
+  copy:
+    src: "{{ k8s_admin_config }}"
+    dest: "$HOME/.kube/config"
+    owner: "{{ k8s_user }}"
+    group: "{{ k8s_user }}"
+    mode: 0640
+    remote_src: yes
+
+- name: Install Calico Pod Network
+  command: kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml

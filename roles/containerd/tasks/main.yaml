@@ -1,0 +1,58 @@
+---
+- name: Install Containerd Dependencies
+  ansible.builtin.apt:
+    pkg:
+      - ca-certificates
+      - curl
+      - gnupg
+      - lsb-release
+
+- name: Add Containerd GPG Key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Add Containerd Repo
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/{{ ansible_system | lower }}/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable
+
+- name: Run the equivalent of "apt-get update" as a separate step
+  ansible.builtin.apt:
+    update_cache: yes
+
+- name: Install Containerd
+  ansible.builtin.apt:
+    update_cache: yes
+    state: latest
+    pkg:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
+
+- name: Remove Containerd Config
+  ansible.builtin.file:
+    path: /etc/containerd/config.toml
+    state: absent
+
+- name: Generate Containerd Config
+  shell: |
+    containerd config default | sudo tee /etc/containerd/config.toml
+    sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
+  args:
+    creates: "/etc/containerd/config.toml"
+
+- name: Enable Container.d Service
+  ansible.builtin.systemd:
+    name: containerd.service
+    state: restarted
+    daemon_reload: true
+    enabled: true
+
+- name: Enable Docker.d Service
+  ansible.builtin.systemd:
+    name: docker.service
+    state: restarted
+    daemon_reload: true
+    enabled: true

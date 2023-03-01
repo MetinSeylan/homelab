@@ -1,0 +1,3 @@
+k8s_admin_config: "/etc/kubernetes/admin.conf"
+k8s_user: "metin"
+k8s_user_home: "/home/{{ k8s_user }}"

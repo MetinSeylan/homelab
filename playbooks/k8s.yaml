@@ -1,0 +1,7 @@
+- name: Install Kubernetes Master
+  hosts: "*"
+  become: true
+  roles:
+    - cli
+    - containerd
+    - k8s

@@ -1,0 +1,6 @@
+- name: Basic Linux Configuration
+  hosts: "*"
+  become: true
+  gather_facts: yes
+  roles:
+    - timezone

@@ -1,0 +1,4 @@
+---
+- name: Linux | Set Timezone to {{ timezone_value }}
+  timezone:
+    name: "{{ timezone_value }}"

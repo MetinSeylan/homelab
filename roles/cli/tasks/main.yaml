@@ -1,0 +1,28 @@
+---
+- name: Install Kubectl
+  shell: |
+    curl -Lo /usr/local/bin/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    chmod +x /usr/local/bin/kubectl
+  args:
+    creates: "/usr/local/bin/kubectl"
+
+- name: Install Clusterctl
+  shell: |
+    curl -Lo /usr/local/bin/clusterctl "https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.1.1/clusterctl-$(uname -s | tr '[:upper:]' '[:lower:]')-amd64"
+    chmod +x /usr/local/bin/clusterctl
+  args:
+    creates: "/usr/local/bin/clusterctl"
+
+- name: Install Clusterctl
+  shell: |
+    curl -Lo /usr/local/bin/clusterctl "https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.1.1/clusterctl-$(uname -s | tr '[:upper:]' '[:lower:]')-amd64"
+    chmod +x /usr/local/bin/clusterctl
+  args:
+    creates: "/usr/local/bin/clusterctl"
+
+- name: Install Talosctl
+  shell: |
+    curl -Lo /usr/local/bin/talosctl "https://github.com/talos-systems/talos/releases/latest/download/talosctl-$(uname -s | tr '[:upper:]' '[:lower:]')-amd64"
+    chmod +x /usr/local/bin/talosctl
+  args:
+    creates: "/usr/local/bin/talosctl"
