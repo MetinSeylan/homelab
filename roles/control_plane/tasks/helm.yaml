@@ -1,0 +1,21 @@
+- name: Helm gpg key
+  shell: curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg
+  args:
+    creates: "/usr/share/keyrings/helm.gpg"
+
+- name: Install apt-transport-https
+  ansible.builtin.apt:
+    update_cache: yes
+    pkg:
+      - apt-transport-https
+
+- name: Helm gpg key sign
+  shell: echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+  args:
+    creates: "/etc/apt/sources.list.d/helm-stable-debian.list"
+
+- name: Install Helm
+  ansible.builtin.apt:
+    update_cache: yes
+    pkg:
+      - helm
