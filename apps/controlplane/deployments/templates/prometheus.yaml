@@ -42,7 +42,7 @@ spec:
   capacity:
     storage: 4Gi
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
