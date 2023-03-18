@@ -20,7 +20,7 @@ spec:
           enabled: false
         retention: 1d
         server:
-          persistentVolume:
+          persistentvolume:
             enabled: false
     repoURL: https://prometheus-community.github.io/helm-charts
     targetRevision: 15.6.0
