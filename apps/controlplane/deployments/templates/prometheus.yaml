@@ -20,9 +20,8 @@ spec:
           enabled: false
         retention: 1d
         service:
-          annotations:
-            metallb.universe.tf/allow-shared-ip: prometheus
-            metallb.universe.tf/address-pool: production
+            type: LoadBalancer
+            loadBalancerIP: "10.0.0.10"
         server:
             statefulSet:
               enabled: true
