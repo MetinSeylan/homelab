@@ -3,8 +3,11 @@
 
 - name: Get Homelab Repo
   ansible.builtin.git:
-    repo: git@github.com:MetinSeylan/homelab.git
+    repo: https://github.com/MetinSeylan/homelab.git
     dest: /home/metin/homelab
 
 - name: Helm dep update
   shell: helm dep update /home/metin/homelab/apps/controlplane/charts/argo-cd/
+
+- name: Install Argocd
+  shell: helm repo add argo-cd https://argoproj.github.io/argo-helm
