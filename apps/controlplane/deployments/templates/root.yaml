@@ -10,7 +10,7 @@ spec:
     namespace: default
   project: default
   source:
-    path: apps/controlplane/
+    path: apps/controlplane/deployments/
     repoURL: https://github.com/MetinSeylan/homelab.git
     targetRevision: HEAD
   syncPolicy:
