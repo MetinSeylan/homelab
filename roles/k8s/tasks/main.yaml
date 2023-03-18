@@ -42,8 +42,7 @@
   shell: kubeadm init --pod-network-cidr 10.244.0.0/16
   args:
     creates: "/etc/kubernetes/admin.conf"
-    
-    
+
 - name: Setup Kubeconfig for {{ k8s_user }} User
   file:
     path: "/home/{{ k8s_user }}/.kube"
@@ -91,7 +90,11 @@
         type: "InfrastructureProvider"
 
 - name: Install Calico Pod Network
-  command: kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml
+  shell: kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml
+  environment:
+    KUBECONFIG: /etc/kubernetes/admin.conf
 
 - name: allow master node to schedule pods
-  command: kubectl taint nodes controlplane node-role.kubernetes.io/control-plane:NoSchedule-
+  shell: kubectl taint nodes controlplane node-role.kubernetes.io/control-plane:NoSchedule-
+  environment:
+    KUBECONFIG: /etc/kubernetes/admin.conf
