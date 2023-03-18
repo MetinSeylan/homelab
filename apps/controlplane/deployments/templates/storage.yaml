@@ -1,16 +1,6 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
 metadata:
   name: local-storage
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
-spec:
-  apiVersion: storage.k8s.io/v1
-  kind: StorageClass
-  metadata:
-    name: local-storage
-  provisioner: kubernetes.io/no-provisioner
-  volumeBindingMode: WaitForFirstConsumer
-
-
-
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
