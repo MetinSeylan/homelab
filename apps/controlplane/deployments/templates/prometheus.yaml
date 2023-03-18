@@ -19,6 +19,10 @@ spec:
         alertmanager:
           enabled: false
         retention: 1d
+        service:
+          annotations:
+            metallb.universe.tf/allow-shared-ip: prometheus
+            metallb.universe.tf/address-pool: production
         server:
             statefulSet:
               enabled: true
