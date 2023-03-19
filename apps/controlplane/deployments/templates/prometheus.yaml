@@ -60,17 +60,3 @@ spec:
               operator: In
               values:
                 - controlplane
-
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: example-service
-spec:
-  selector:
-    app: prometheus
-  ports:
-    - port: 80
-      targetPort: 9090
-  type: LoadBalancer
