@@ -115,7 +115,10 @@ metadata:
     - storage.finalizers.server.k8s.io
   name: cad832c4-40f4-4b61-adee-dd277748c621
 spec:
-  bootFromDiskMethod: ipxe-sanbootgi
+  configPatches:
+    - op: replace
+      path: /machine/install/disk
+      value: /dev/scsi0
   accepted: true
   cpu:
     manufacturer: QEMU
