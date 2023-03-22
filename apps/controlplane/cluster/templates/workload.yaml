@@ -52,7 +52,7 @@ spec:
   controlPlaneConfig:
     controlplane:
       generateType: controlplane
-      talosVersion: v1.3.6
+      talosVersion: v1.3.0
   infrastructureTemplate:
     apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
     kind: MetalMachineTemplate
@@ -69,7 +69,7 @@ spec:
   template:
     spec:
       generateType: join
-      talosVersion: v1.3.6
+      talosVersion: v1.3.0
 ---
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: MachineDeployment
