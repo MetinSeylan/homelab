@@ -118,6 +118,10 @@ metadata:
   name: cad832c4-40f4-4b61-adee-dd277748c621
 spec:
   accepted: true
+  configPatches:
+    - op: replace
+      path: /machine/install/disk
+      value: /dev/sda
   cpu:
     manufacturer: QEMU
     version: pc-i440fx-7.1
