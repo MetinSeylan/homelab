@@ -41,7 +41,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: system
+  name: cluster
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -50,7 +50,7 @@ spec:
     namespace: default
   project: default
   source:
-    path: apps/controlplane/sidero/
+    path: apps/controlplane/cluster/
     repoURL: https://github.com/MetinSeylan/homelab.git
     targetRevision: HEAD
   syncPolicy:
