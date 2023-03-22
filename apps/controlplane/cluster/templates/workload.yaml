@@ -114,7 +114,6 @@ kind: Server
 metadata:
   finalizers:
     - storage.finalizers.server.k8s.io
-  generation: 1
   name: cad832c4-40f4-4b61-adee-dd277748c621
 spec:
   accepted: true
