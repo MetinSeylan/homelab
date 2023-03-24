@@ -27,7 +27,7 @@ metadata:
   namespace: default
 spec:
   controlPlaneEndpoint:
-    host: 10.0.0.12
+    host: 10.0.0.11
     port: 6443
 ---
 apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
@@ -133,3 +133,25 @@ spec:
     serialNumber: MJ07FMAR
     skuNumber: LENOVO_MT_10MQ_BU_LENOVO_FM_ThinkCentre M710q
     version: ThinkCentre M710q
+
+---
+
+apiVersion: metal.sidero.dev/v1alpha1
+kind: Server
+metadata:
+  finalizers:
+    - storage.finalizers.server.k8s.io
+  name: fd9adb97-bd7f-4c8b-ae7f-16ed5fcd9a36
+spec:
+  accepted: true
+  cpu:
+    manufacturer: QEMU
+    version: pc-i440fx-7.1
+  hostname: master
+  system:
+    family: Unknown
+    manufacturer: QEMU
+    productName: Standard PC (i440FX + PIIX, 1996)
+    serialNumber: Unknown
+    skuNumber: Unknown
+    version: pc-i440fx-7.1
