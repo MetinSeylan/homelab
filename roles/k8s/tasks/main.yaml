@@ -61,33 +61,6 @@
     mode: 0640
     remote_src: yes
 
-- name: Setup Clusterctl folder for {{ k8s_user }} User
-  file:
-    path: "/home/{{ k8s_user }}/.cluster-api"
-    state: directory
-    owner: "{{ k8s_user }}"
-    group: "{{ k8s_user }}"
-    mode: 0750
-
-- name: Create clusterctl.yaml file
-  file:
-    path: "/home/{{ k8s_user }}/.cluster-api/clusterctl.yaml"
-    state: touch
-
-- name: Write clusterctl.yaml file
-  copy:
-    dest: "/home/{{ k8s_user }}/.cluster-api/clusterctl.yaml"
-    content: |
-      providers:
-      - name: "talos"
-        url: "https://github.com/siderolabs/cluster-api-bootstrap-provider-talos/releases/latest/bootstrap-components.yaml"
-        type: "BootstrapProvider"
-      - name: "talos"
-        url: "https://github.com/siderolabs/cluster-api-control-plane-provider-talos/releases/latest/control-plane-components.yaml"
-        type: "ControlPlaneProvider"
-      - name: "sidero"
-        url: "https://github.com/siderolabs/sidero/releases/latest/infrastructure-components.yaml"
-        type: "InfrastructureProvider"
 
 - name: Install Calico Pod Network
   shell: kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml
@@ -98,3 +71,5 @@
   shell: kubectl taint nodes controlplane node-role.kubernetes.io/control-plane:NoSchedule-
   environment:
     KUBECONFIG: /etc/kubernetes/admin.conf
+
+
