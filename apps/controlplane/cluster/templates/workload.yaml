@@ -109,27 +109,3 @@ spec:
         name: any
 
 ---
-
-apiVersion: metal.sidero.dev/v1alpha1
-kind: Server
-metadata:
-  finalizers:
-    - storage.finalizers.server.k8s.io
-  name: 9bbc3880-b676-11e8-8e50-c4f0569c5200
-spec:
-  configPatches:
-    - op: replace
-      path: /machine/install/disk
-      value: /dev/nvme0n1
-  accepted: true
-  cpu:
-    manufacturer: Intel(R) Corporation
-    version: Intel(R) Core(TM) i5-7500T CPU @ 2.70GHz
-  hostname: node-02
-  system:
-    family: ThinkCentre M710q
-    manufacturer: LENOVO
-    productName: 10MQS2A500
-    serialNumber: MJ07FMAR
-    skuNumber: LENOVO_MT_10MQ_BU_LENOVO_FM_ThinkCentre M710q
-    version: ThinkCentre M710q
