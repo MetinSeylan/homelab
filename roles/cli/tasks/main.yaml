@@ -1,4 +1,10 @@
----
+- name: Install CLI Tools
+  ansible.builtin.apt:
+    update_cache: yes
+    pkg:
+      - ca-certificates
+      - curl
+
 - name: Install Kubectl
   shell: |
     curl -Lo /usr/local/bin/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
