@@ -139,15 +139,13 @@ spec:
 apiVersion: metal.sidero.dev/v1alpha1
 kind: Server
 metadata:
-  finalizers:
-    - storage.finalizers.server.k8s.io
-  name: fd9adb97-bd7f-4c8b-ae7f-16ed5fcd9a36
+  name: 1c62bdea-2082-47c0-ac4e-973829d86aa9
 spec:
   accepted: true
   cpu:
     manufacturer: QEMU
     version: pc-i440fx-7.1
-  hostname: master
+  hostname: 10.0.0.11
   system:
     family: Unknown
     manufacturer: QEMU
