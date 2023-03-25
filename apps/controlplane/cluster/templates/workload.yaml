@@ -141,6 +141,10 @@ kind: Server
 metadata:
   name: 1c62bdea-2082-47c0-ac4e-973829d86aa9
 spec:
+  configPatches:
+    - op: replace
+      path: /machine/install/disk
+      value: /dev/scsi0
   accepted: true
   cpu:
     manufacturer: QEMU
