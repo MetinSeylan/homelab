@@ -28,7 +28,7 @@ spec:
             persistentVolume:
               enabled: true
               volumeName: prometheus-pv
-              size: 4Gi
+              size: 8Gi
               storageClass: local-storage
     repoURL: https://prometheus-community.github.io/helm-charts
     targetRevision: 19.0.0
@@ -45,13 +45,13 @@ metadata:
   name: prometheus-pv
 spec:
   capacity:
-    storage: 4Gi
+    storage: 8Gi
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /mnt/disks/prometheus
+    path: /mnt/prometheus
   nodeAffinity:
     required:
       nodeSelectorTerms:
