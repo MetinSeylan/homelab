@@ -21,7 +21,7 @@ spec:
           size: 2Gi
           storageClassName: local-storage
           existingClaim: grafana-pv
-        nodeSelector:
+        affinity:
           nodeAffinity:
             required:
               nodeSelectorTerms:
