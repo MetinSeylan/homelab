@@ -31,7 +31,7 @@ spec:
                       values:
                         - controlplane
     repoURL: https://grafana.github.io/helm-charts
-    targetRevision: "*"
+    targetRevision: "6.52.9"
   syncPolicy:
     automated:
       prune: true
