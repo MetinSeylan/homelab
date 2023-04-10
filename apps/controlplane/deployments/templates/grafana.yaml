@@ -22,14 +22,14 @@ spec:
           storageClassName: local-storage
           existingClaim: grafana-pv
         nodeSelector:
-            nodeAffinity:
-              required:
-                nodeSelectorTerms:
-                  - matchExpressions:
-                      - key: kubernetes.io/hostname
-                        operator: In
-                        values:
-                          - controlplane
+          nodeAffinity:
+            required:
+              nodeSelectorTerms:
+                - matchExpressions:
+                    - key: kubernetes.io/hostname
+                      operator: In
+                      values:
+                        - controlplane
     repoURL: https://grafana.github.io/helm-charts
     targetRevision: *
   syncPolicy:
