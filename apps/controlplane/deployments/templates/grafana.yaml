@@ -15,6 +15,7 @@ spec:
     helm:
       values: |
         adminPassword: "admin"
+        adminUser: "admin"
         persistence:
           type: statefulset
           enabled: true
