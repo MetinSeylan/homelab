@@ -14,6 +14,7 @@ spec:
     chart: grafana
     helm:
       values: |
+        adminPassword: "admin"
         persistence:
           type: statefulset
           enabled: true
