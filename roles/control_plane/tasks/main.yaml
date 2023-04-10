@@ -3,6 +3,3 @@
 
 - name: Install Argocd
   ansible.builtin.include: argocd.yaml
-
-- name: Install Sidero
-  ansible.builtin.include: sidero.yaml
