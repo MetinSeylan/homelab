@@ -21,15 +21,6 @@ spec:
           size: 2Gi
           storageClassName: local-storage
           volumeName: grafana-pv
-        affinity:
-          nodeAffinity:
-            required:
-              nodeSelectorTerms:
-                - matchExpressions:
-                    - key: kubernetes.io/hostname
-                      operator: In
-                      values:
-                        - controlplane
     repoURL: https://grafana.github.io/helm-charts
     targetRevision: "6.52.9"
   syncPolicy:
