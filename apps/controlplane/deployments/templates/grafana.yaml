@@ -17,10 +17,10 @@ spec:
         persistence:
           enabled: true
           accessModes:
-            - ReadWriteOnce
+              - ReadWriteOnce
           size: 2Gi
           storageClassName: local-storage
-          existingClaim: grafana-pv
+          volumeName: grafana-pv
         affinity:
           nodeAffinity:
             required:
