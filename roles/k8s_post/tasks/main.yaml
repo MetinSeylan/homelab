@@ -1,0 +1,24 @@
+- name: Install Calico Pod Network
+  shell: kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml
+  environment:
+    KUBECONFIG: /etc/kubernetes/admin.conf
+
+- name: add label to master
+  shell: kubectl label node master role=master
+  environment:
+    KUBECONFIG: /etc/kubernetes/admin.conf
+
+- name: add label to node1
+  shell: kubectl label node node1 role=node1
+  environment:
+    KUBECONFIG: /etc/kubernetes/admin.conf
+
+- name: add label to node2
+  shell: kubectl label node node2 role=node2
+  environment:
+    KUBECONFIG: /etc/kubernetes/admin.conf
+
+- name: allow master node to schedule pods
+  shell: kubectl taint nodes master node-role.kubernetes.io/control-plane:NoSchedule-
+  environment:
+    KUBECONFIG: /etc/kubernetes/admin.conf

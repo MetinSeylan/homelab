@@ -1,0 +1,5 @@
+- name: Post K8s Setup
+  hosts: "master"
+  become: true
+  roles:
+    - k8s_post
