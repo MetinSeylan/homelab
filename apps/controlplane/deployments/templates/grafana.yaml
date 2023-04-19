@@ -45,7 +45,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /mnt/grafana
+    path: /storage/nvme/grafana
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -53,4 +53,4 @@ spec:
             - key: kubernetes.io/hostname
               operator: In
               values:
-                - controlplane
+                - master

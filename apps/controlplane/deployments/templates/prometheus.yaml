@@ -51,7 +51,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /mnt/prometheus
+    path: /storage/nvme/prometheus
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -59,4 +59,4 @@ spec:
             - key: kubernetes.io/hostname
               operator: In
               values:
-                - controlplane
+                - master

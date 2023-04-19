@@ -2,4 +2,4 @@
   hosts: "node1,node2"
   become: true
   roles:
-    - k8s
+    - nodes
