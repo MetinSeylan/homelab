@@ -1,4 +1,7 @@
 argo-cd:
+  global:
+    nodeSelector:
+      role: master
   dex:
     enabled: false
   server:
