@@ -4,3 +4,6 @@
   gather_facts: yes
   roles:
     - timezone
+    - cli
+    - containerd
+    - k8s

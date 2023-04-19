@@ -1,0 +1,5 @@
+- name: Install K8s Master
+  hosts: "master"
+  become: true
+  roles:
+    - master

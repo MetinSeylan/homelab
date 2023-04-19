@@ -1,5 +1,5 @@
 - name: Install Cluster Control Plane
-  hosts: "*"
+  hosts: "master"
   become: yes
   roles:
     - control_plane

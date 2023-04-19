@@ -1,12 +1,15 @@
 .POSIX:
 
-default: config k8s control_plane
+default: config master nodes
 
 config:
 	ansible-playbook playbooks/configuration.yaml
 
-k8s:
-	ansible-playbook playbooks/k8s.yaml
+master:
+	ansible-playbook playbooks/master.yaml
+
+nodes:
+	ansible-playbook playbooks/nodes.yaml
 
 control_plane:
 	ansible-playbook playbooks/control_plane.yaml
