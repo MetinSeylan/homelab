@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: prometheus
-  namespace: monitoring
+  namespace: default
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
