@@ -17,6 +17,8 @@ spec:
         controller:
           metrics:
             enabled: true
+          nodeSelector:
+            role: master
         speaker:
           metrics:
             enabled: true
