@@ -23,6 +23,7 @@ spec:
           metrics:
             enabled: true
     repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: "4.3.0"
   syncPolicy:
     automated:
       prune: true
