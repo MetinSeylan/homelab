@@ -27,6 +27,7 @@ spec:
             storageSpec:
               volumeClaimTemplate:
                 spec:
+                  storageClassName: local-storage
                   selector:
                     matchLabels:
                       app.kubernetes.io/name: prometheus-pv
