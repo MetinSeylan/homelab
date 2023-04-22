@@ -27,13 +27,7 @@ spec:
             storageSpec:
               volumeClaimTemplate:
                 spec:
-                  storageClassName: local-storage
-                  selector:
-                    matchLabels:
-                      app.kubernetes.io/name: prometheus-pv
-                  resources:
-                    requests:
-                      storage: 8Gi
+                  volumeName: prometheus-pv
             nodeSelector:
               role: master
     repoURL: https://prometheus-community.github.io/helm-charts
