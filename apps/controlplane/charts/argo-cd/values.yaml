@@ -1,4 +1,9 @@
 argo-cd:
+  controller:
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
   global:
     nodeSelector:
       role: master
