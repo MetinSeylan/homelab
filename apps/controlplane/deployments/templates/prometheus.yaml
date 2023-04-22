@@ -22,10 +22,7 @@ spec:
         prometheusOperator:
           nodeSelector:
             role: master
-        prometheus:
-          prometheusSpec:
-            nodeSelector:
-              role: master
+
     repoURL: https://prometheus-community.github.io/helm-charts
     targetRevision: 45.19.0
   syncPolicy:
