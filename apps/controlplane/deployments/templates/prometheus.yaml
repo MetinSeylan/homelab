@@ -14,6 +14,12 @@ spec:
     chart: kube-prometheus-stack
     helm:
       values: |
+        grafana:
+          nodeSelector:
+            role: master
+        prometheusOperator:
+          nodeSelector:
+            role: master
         prometheus:
           prometheusSpec:
             nodeSelector:
