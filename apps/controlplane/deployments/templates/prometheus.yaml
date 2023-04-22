@@ -23,7 +23,6 @@ spec:
           nodeSelector:
             role: master
         prometheus:
-          enabled: false
           prometheusSpec:
             nodeSelector:
               role: master
