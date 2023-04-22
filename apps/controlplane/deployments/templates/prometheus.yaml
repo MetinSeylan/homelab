@@ -33,7 +33,11 @@ spec:
     automated:
       prune: true
       selfHeal: true
-
+    syncOptions:
+      - CreateNamespace=true
+      - Validate=false
+      - ApplyOutOfSyncOnly=true
+      - PrunePropagationPolicy=Foreground
 ---
 
 apiVersion: v1
