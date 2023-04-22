@@ -16,6 +16,8 @@ spec:
       values: |
         controller:
           metrics:
+            serviceMonitor:
+              enabled: true
             enabled: true
           nodeSelector:
             role: master
