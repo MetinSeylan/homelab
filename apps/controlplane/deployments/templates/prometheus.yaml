@@ -17,6 +17,8 @@ spec:
         grafana:
           nodeSelector:
             role: master
+        alertmanager:
+          enabled: false
         prometheusOperator:
           nodeSelector:
             role: master
