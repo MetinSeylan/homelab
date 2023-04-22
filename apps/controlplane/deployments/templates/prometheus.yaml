@@ -23,6 +23,8 @@ spec:
           nodeSelector:
             role: master
         prometheus:
+          thanosService:
+            enabled: true
           prometheusSpec:
             storageSpec:
               volumeClaimTemplate:
