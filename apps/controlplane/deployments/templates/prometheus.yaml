@@ -30,14 +30,11 @@ spec:
     repoURL: https://prometheus-community.github.io/helm-charts
     targetRevision: 45.19.0
   syncPolicy:
+    syncOptions:
+      - ServerSideApply=true
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
-      - Validate=false
-      - ApplyOutOfSyncOnly=true
-      - PrunePropagationPolicy=Foreground
 ---
 
 apiVersion: v1
