@@ -11,7 +11,7 @@ spec:
     namespace: default
   project: default
   source:
-    chart: prometheus-community/kube-prometheus-stack
+    chart: kube-prometheus-stack
     helm:
       values: |
         prometheus:
