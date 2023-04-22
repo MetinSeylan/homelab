@@ -17,8 +17,6 @@ spec:
         controller:
           metrics:
             enabled: true
-            serviceMonitor:
-              enabled: true
           nodeSelector:
             role: master
     repoURL: https://kubernetes.github.io/ingress-nginx
