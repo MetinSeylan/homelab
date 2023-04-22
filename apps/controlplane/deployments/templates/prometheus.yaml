@@ -63,3 +63,22 @@ spec:
               operator: In
               values:
                 - master
+---
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-grafana
+spec:
+  rules:
+    - host: grafana.metin.sh
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: prometheus-stack-grafana
+                port:
+                  number: 80
+  ingressClassName: nginx
