@@ -1,0 +1,85 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus-stack
+  namespace: default
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  project: default
+  source:
+    chart: kube-prometheus-stack
+    helm:
+      values: |
+        grafana:
+          nodeSelector:
+            role: master
+        alertmanager:
+          enabled: false
+        prometheusOperator:
+          nodeSelector:
+            role: master
+        prometheus:
+          enabled: false
+          prometheusSpec:
+            nodeSelector:
+              role: master
+    repoURL: https://prometheus-community.github.io/helm-charts
+    targetRevision: 45.19.0
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=true
+    automated:
+      prune: true
+      selfHeal: true
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: prometheus-pv
+  namespace: default
+spec:
+  capacity:
+    storage: 8Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /storage/nvme/prometheus
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - master
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: grafana-pv
+  namespace: default
+spec:
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /storage/nvme/grafana
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - master
