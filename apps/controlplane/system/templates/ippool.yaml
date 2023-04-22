@@ -6,3 +6,9 @@ metadata:
 spec:
   addresses:
     - 192.168.2.72/1
+---
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: l2-advert
+  namespace: kube-system
