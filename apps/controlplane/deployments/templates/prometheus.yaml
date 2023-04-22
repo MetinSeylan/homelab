@@ -12,7 +12,21 @@ spec:
   project: default
   source:
     chart: kube-prometheus-stack
-
+    helm:
+      values: |
+        grafana:
+          nodeSelector:
+            role: master
+        alertmanager:
+          enabled: false
+        prometheusOperator:
+          nodeSelector:
+            role: master
+        prometheus:
+          enabled: false
+          prometheusSpec:
+            nodeSelector:
+              role: master
     repoURL: https://prometheus-community.github.io/helm-charts
     targetRevision: 45.19.0
   syncPolicy:
