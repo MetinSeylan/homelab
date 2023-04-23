@@ -11,7 +11,7 @@ spec:
     namespace: argo-cd
   project: default
   source:
-    path: apps/charts/argo-cd
+    path: apps/controlplane/charts/argo-cd
     repoURL: https://github.com/MetinSeylan/homelab.git
     targetRevision: HEAD
   syncPolicy:
