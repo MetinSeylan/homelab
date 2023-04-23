@@ -16,9 +16,11 @@ spec:
       values: |
         controller:
           metrics:
+            enabled: true
             serviceMonitor:
               enabled: true
-            enabled: true
+              additionalLabels:
+                release: prometheus-stack
           nodeSelector:
             role: master
     repoURL: https://kubernetes.github.io/ingress-nginx
