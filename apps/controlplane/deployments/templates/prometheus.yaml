@@ -48,7 +48,7 @@ metadata:
   name: prometheus-pv
   labels:
     app.kubernetes.io/name: prometheus-pv
-  namespace: default
+  namespace: monitoring
 spec:
   capacity:
     storage: 8Gi
