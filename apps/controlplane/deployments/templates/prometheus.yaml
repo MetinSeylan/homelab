@@ -24,6 +24,10 @@ spec:
             role: master
         prometheus:
           prometheusSpec:
+            storageSpec:
+              volumeClaimTemplate:
+                spec:
+                  volumeName: prometheus-pv
             nodeSelector:
               role: master
     repoURL: https://prometheus-community.github.io/helm-charts
