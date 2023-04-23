@@ -71,7 +71,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-grafana
-  namespace: monitoring
+  namespace: default
 spec:
   rules:
     - host: grafana.metin.sh
