@@ -8,7 +8,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: monitoring
+    namespace: default
   project: default
   source:
     chart: ingress-nginx
