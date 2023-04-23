@@ -22,6 +22,6 @@ Metin Seylan's personal bare-metal Kubernetes cluster.
     - 1TB NVME
 
 <p align="center">
-  <img src="./image.jpg" alt="Homelab" width="700" />
+  <img src="./image.jpg" alt="Homelab" width="800" />
 </p>
 
