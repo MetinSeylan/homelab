@@ -10,7 +10,7 @@
   shell: helm dep update /home/metin/homelab/apps/controlplane/charts/argo-cd/
 
 - name: Install Argocd
-  shell: helm install argo-cd /home/metin/homelab/apps/controlplane/charts/argo-cd/
+  shell: helm install argo-cd -n argo-cd --create-namespace /home/metin/homelab/apps/controlplane/charts/argo-cd/
   environment:
     KUBECONFIG: /etc/kubernetes/admin.conf
 
