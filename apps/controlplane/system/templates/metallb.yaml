@@ -19,6 +19,8 @@ spec:
             enabled: true
             serviceMonitor:
               enabled: true
+              labels:
+                release: prometheus-stack
           nodeSelector:
             role: master
         speaker:
