@@ -8,7 +8,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: argo-cd
+    namespace: default
   project: default
   source:
     path: apps/controlplane/charts/argo-cd
