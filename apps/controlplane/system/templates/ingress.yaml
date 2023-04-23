@@ -8,7 +8,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: ingress-nginx
   project: default
   source:
     chart: ingress-nginx
@@ -29,3 +29,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
