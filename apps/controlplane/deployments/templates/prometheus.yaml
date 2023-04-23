@@ -30,8 +30,8 @@ spec:
                   storageClassName: local-storage
                   accessModes: ["ReadWriteOnce"]
                   resources:
-                      requests:
-                        storage: 8Gi
+                    requests:
+                      storage: 8Gi
             nodeSelector:
               role: master
     repoURL: https://prometheus-community.github.io/helm-charts
