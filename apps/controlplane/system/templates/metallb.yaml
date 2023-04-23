@@ -19,17 +19,12 @@ spec:
             enabled: true
             serviceMonitor:
               enabled: true
-              selector:
-                release: prometheus-stack
           nodeSelector:
             role: master
         speaker:
           metrics:
             serviceMonitor:
               enabled: true
-              selector:
-                release: prometheus-stack
-
             enabled: true
     repoURL: https://charts.bitnami.com/bitnami
     targetRevision: "4.3.0"
