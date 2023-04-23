@@ -13,4 +13,7 @@ Metin Seylan's personal bare-metal Kubernetes cluster.
   - [Nginx Ingress](https://kubernetes.github.io/ingress-nginx/)
   - [Prometheus](https://prometheus.io/)
 
-![bare metal home servers](./image.jpg)
+<p align="center">
+  <img src="./image.jpg" alt="Homelab" width="600" />
+</p>
+
