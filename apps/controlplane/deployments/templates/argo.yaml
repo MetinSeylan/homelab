@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-cd
+  namespace: default
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argo-cd
+  project: default
+  source:
+    path: apps/charts/argo-cd
+    repoURL: https://github.com/MetinSeylan/homelab.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+        - CreateNamespace=true
