@@ -8,7 +8,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: monitoring
   project: default
   source:
     chart: kube-prometheus-stack
@@ -37,6 +37,7 @@ spec:
   syncPolicy:
     syncOptions:
       - ServerSideApply=true
+      - CreateNamespace=true
     automated:
       prune: true
       selfHeal: true
