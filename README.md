@@ -17,7 +17,7 @@ Metin Seylan's personal bare-metal Kubernetes cluster.
 - Hardware
   - Lenovo ThinkCentre Tiny 3x
     - Intel Core i7-7700T
-    - Crucial 65GB DDR4 2666MHz
+    - Crucial 64GB DDR4 2666MHz
     - 1TB SSD
     - 1TB NVME
 
