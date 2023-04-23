@@ -14,7 +14,12 @@
   environment:
     KUBECONFIG: /etc/kubernetes/admin.conf
 
-- name: Install Argo System
+- name: Install Argo Deployment Root
   shell: kubectl apply -f /home/metin/homelab/apps/controlplane/deployments/templates/root.yaml
+  environment:
+    KUBECONFIG: /etc/kubernetes/admin.conf
+
+- name: Install Argo System Root
+  shell: kubectl apply -f /home/metin/homelab/apps/controlplane/system/templates/root.yaml
   environment:
     KUBECONFIG: /etc/kubernetes/admin.conf
