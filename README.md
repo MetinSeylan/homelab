@@ -1,18 +1,16 @@
 ## Homelab
 
-Metin Seylan's personal bare-metal automated provisioning and management system.
+Metin Seylan's personal bare-metal Kubernetes cluster.
 
 - Network
     - [PFsense](https://www.pfsense.org/)
-    - ...
-- Provisioning
-  - [Sidero](https://www.sidero.dev/)
-  - ...
 
 - Apps
-  - [Kubernetes](https://kubernetes.io/)
   - [ArgoCD](https://argoproj.github.io/argo-cd/)
-  - [Prometheus](https://prometheus.io/)
   - [Grafana](https://grafana.com/)
-  - ...
-  
+  - [Kubernetes](https://kubernetes.io/)
+  - [Metallb](https://metallb.universe.tf/)
+  - [Nginx Ingress](https://kubernetes.github.io/ingress-nginx/)
+  - [Prometheus](https://prometheus.io/)
+
+![bare metal home servers](./image.jpg)
