@@ -24,9 +24,10 @@ spec:
     helm:
       values: | # grafana should be public accessable wıthout password
         grafana:
-          auth.anonymous:
-            enabled: true
-            org_role: Admin
+          grafana.ini:
+            auth.anonymous:
+              enabled: true
+              org_role: Admin
           nodeSelector:
             role: master
 
