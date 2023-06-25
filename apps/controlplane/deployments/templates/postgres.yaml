@@ -69,12 +69,12 @@ spec:
         size: 1Gi
     configurations:
       sgPostgresConfig: coordinator-config
-    shards:
-      clusters: 2
-      instancesPerCluster: 1
-      sgInstanceProfile: worker-profile
-      configurations:
-        sgPostgresConfig: worker-config
-      pods:
-        persistentVolume:
-          size: 64Gi
+  shards:
+    clusters: 2
+    instancesPerCluster: 1
+    sgInstanceProfile: worker-profile
+    configurations:
+      sgPostgresConfig: worker-config
+    pods:
+      persistentVolume:
+        size: 64Gi
