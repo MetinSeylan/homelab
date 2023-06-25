@@ -3,6 +3,8 @@ argo-cd:
     nodeSelector:
       role: master
   configs:
+    rbac:
+      policy.default: role:admin
     cm:
       users.anonymous.enabled: true
   dex:
