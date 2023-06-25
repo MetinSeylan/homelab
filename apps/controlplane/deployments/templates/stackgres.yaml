@@ -27,9 +27,11 @@ spec:
           nodeSelector:
             role: master
         restApi:
-          role: master
+          nodeSelector:
+            role: master
         jobs:
-          role: master
+          nodeSelector:
+            role: master
     repoURL: https://stackgres.io/downloads/stackgres-k8s/stackgres/helm/
     targetRevision: 1.5.0-RC1
   syncPolicy:
