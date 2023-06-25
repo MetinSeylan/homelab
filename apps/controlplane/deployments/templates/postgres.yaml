@@ -1,8 +1,0 @@
-apiVersion: stackgres.io/v1
-kind: SGInstanceProfile
-metadata:
-  name: coordinator-profile
-  namespace: stackgres
-spec:
-  cpu: 500m
-  memory: 1Gi
