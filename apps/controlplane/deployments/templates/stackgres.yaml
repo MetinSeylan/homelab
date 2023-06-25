@@ -25,7 +25,7 @@ spec:
       values: |
         grafana:
           autoEmbed: true
-          webHost: "kube-prometheus-stack-grafana.monitoring.svc"
+          webHost: "prometheus-stack-grafana.monitoring.svc"
         operator:
           nodeSelector:
             role: master
