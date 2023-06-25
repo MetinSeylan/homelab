@@ -23,6 +23,8 @@ spec:
     chart: stackgres-operator
     helm:
       values: |
+        grafana:
+          autoEmbed: true
         operator:
           nodeSelector:
             role: master
