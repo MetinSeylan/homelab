@@ -52,7 +52,7 @@ spec:
 
 ---
 apiVersion: stackgres.io/v1alpha1
-kind: SGSharedCluster
+kind: SGShardedCluster
 metadata:
   name: postgres-cluster
   namespace: postgres
