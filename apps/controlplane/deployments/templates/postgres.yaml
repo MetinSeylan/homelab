@@ -14,7 +14,7 @@ metadata:
   namespace: postgres
 spec:
   cpu: 500m
-  memory: 1Gi
+  memory: 2Gi
 
 ---
 apiVersion: stackgres.io/v1
@@ -25,3 +25,27 @@ metadata:
 spec:
   cpu: 1000m
   memory: 4Gi
+
+---
+apiVersion: stackgres.io/v1
+kind: SGPostgresConfig
+metadata:
+  name: coordinator-config
+  namespace: postgres
+spec:
+  postgresVersion: "15"
+  postgresql.conf:
+    shared_buffers: "512MB"
+    random_page_cost: "1.5"
+
+---
+apiVersion: stackgres.io/v1
+kind: SGPostgresConfig
+metadata:
+  name: worker-config
+  namespace: postgres
+spec:
+  postgresVersion: "15"
+  postgresql.conf:
+    shared_buffers: "2048MB"
+    random_page_cost: "1.5"
