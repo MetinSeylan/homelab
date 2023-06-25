@@ -47,7 +47,7 @@ metadata:
 spec:
   postgresVersion: "15"
   postgresql.conf:
-    shared_buffers: "2048MB"
+    shared_buffers: "1024MB"
     random_page_cost: "1.5"
 
 ---
