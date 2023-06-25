@@ -4,7 +4,8 @@ argo-cd:
       role: master
   configs:
     cm:
-      admin.enabled: false
+      admin.enabled: true
+      server.disable.auth: false
       users:
         anonymous.enabled: true
   dex:
