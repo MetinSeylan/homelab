@@ -7,7 +7,6 @@ metadata:
   name: postgres
 
 ---
-
 apiVersion: stackgres.io/v1
 kind: SGInstanceProfile
 metadata:
@@ -16,3 +15,13 @@ metadata:
 spec:
   cpu: 500m
   memory: 1Gi
+
+---
+apiVersion: stackgres.io/v1
+kind: SGInstanceProfile
+metadata:
+  name: worker-profile
+  namespace: postgres
+spec:
+  cpu: 1
+  memory: 4Gi
