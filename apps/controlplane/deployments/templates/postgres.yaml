@@ -39,18 +39,6 @@ spec:
     random_page_cost: "1.5"
 
 ---
-apiVersion: stackgres.io/v1
-kind: SGPostgresConfig
-metadata:
-  name: worker-config
-  namespace: stackgres
-spec:
-  postgresVersion: "15"
-  postgresql.conf:
-    shared_buffers: "1024MB"
-    random_page_cost: "1.5"
-
----
 apiVersion: stackgres.io/v1alpha1
 kind: SGShardedCluster
 metadata:
@@ -74,7 +62,7 @@ spec:
     instancesPerCluster: 1
     sgInstanceProfile: worker-profile
     configurations:
-      sgPostgresConfig: worker-config
+      sgPostgresConfig: coordinator-config
     pods:
       persistentVolume:
         size: 64Gi
