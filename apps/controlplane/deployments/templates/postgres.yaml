@@ -45,6 +45,7 @@ metadata:
   name: stackgres
   namespace: stackgres
 spec:
+  type: 'citus'
   database: 'postgres'
   postgres:
     version: 'latest'
