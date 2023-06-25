@@ -1,3 +1,11 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    kubernetes.io/metadata.name: postgres
+    name: postgres
+  name: postgres
+---
 apiVersion: stackgres.io/v1
 kind: SGInstanceProfile
 metadata:
