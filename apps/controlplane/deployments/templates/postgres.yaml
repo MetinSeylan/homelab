@@ -42,27 +42,19 @@ spec:
 apiVersion: stackgres.io/v1alpha1
 kind: SGShardedCluster
 metadata:
-  name: postgres-cluster
+  name: stackgres
   namespace: stackgres
 spec:
   postgres:
-    version: 15
-  type: citus
-  database: postgres
+    version: 'latest'
   coordinator:
     instances: 1
-    sgInstanceProfile: coordinator-profile
     pods:
       persistentVolume:
-        size: 1Gi
-    configurations:
-      sgPostgresConfig: coordinator-config
+        size: '1Gi'
   shards:
     clusters: 2
     instancesPerCluster: 1
-    sgInstanceProfile: worker-profile
-    configurations:
-      sgPostgresConfig: coordinator-config
     pods:
       persistentVolume:
-        size: 64Gi
+        size: '2Gi'
