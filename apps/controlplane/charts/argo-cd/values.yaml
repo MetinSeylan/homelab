@@ -2,6 +2,10 @@ argo-cd:
   global:
     nodeSelector:
       role: master
+  configs:
+    cm:
+      admin:
+        enabled: false
   dex:
     enabled: false
   server:
