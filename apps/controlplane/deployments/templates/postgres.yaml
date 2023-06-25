@@ -11,7 +11,7 @@ apiVersion: stackgres.io/v1
 kind: SGInstanceProfile
 metadata:
   name: coordinator-profile
-  namespace: postgres
+  namespace: stackgres
 spec:
   cpu: 500m
   memory: 2Gi
@@ -21,7 +21,7 @@ apiVersion: stackgres.io/v1
 kind: SGInstanceProfile
 metadata:
   name: worker-profile
-  namespace: postgres
+  namespace: stackgres
 spec:
   cpu: 1000m
   memory: 4Gi
@@ -31,7 +31,7 @@ apiVersion: stackgres.io/v1
 kind: SGPostgresConfig
 metadata:
   name: coordinator-config
-  namespace: postgres
+  namespace: stackgres
 spec:
   postgresVersion: "15"
   postgresql.conf:
@@ -43,7 +43,7 @@ apiVersion: stackgres.io/v1
 kind: SGPostgresConfig
 metadata:
   name: worker-config
-  namespace: postgres
+  namespace: stackgres
 spec:
   postgresVersion: "15"
   postgresql.conf:
@@ -55,7 +55,7 @@ apiVersion: stackgres.io/v1alpha1
 kind: SGShardedCluster
 metadata:
   name: postgres-cluster
-  namespace: postgres
+  namespace: stackgres
 spec:
   postgres:
     version: 15
