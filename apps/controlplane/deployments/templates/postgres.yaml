@@ -71,7 +71,7 @@ spec:
       sgPostgresConfig: coordinator-config
     shards:
       clusters: 2
-      instancePerCluster: 1
+      instancesPerCluster: 1
       sgInstanceProfile: worker-profile
       configurations:
         sgPostgresConfig: worker-config
