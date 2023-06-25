@@ -62,7 +62,7 @@ spec:
   type: citus
   database: postgres
   coordinator:
-    instance: 1
+    instances: 1
     sgInstanceProfile: coordinator-profile
     pods:
       persistentVolume:
