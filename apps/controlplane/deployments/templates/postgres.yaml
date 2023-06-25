@@ -45,6 +45,7 @@ metadata:
   name: stackgres
   namespace: stackgres
 spec:
+  database: 'postgres'
   postgres:
     version: 'latest'
   coordinator:
