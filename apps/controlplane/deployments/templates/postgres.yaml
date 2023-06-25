@@ -66,8 +66,8 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: prometheus-pv
-  namespace: monitoring
+  name: postgres-pv
+  namespace: stackgres
 spec:
   capacity:
     storage: 20Gi
