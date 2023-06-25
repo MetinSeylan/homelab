@@ -22,10 +22,15 @@ spec:
   source:
     chart: kube-prometheus-stack
     helm:
-      values: |
+      values: | # grafana should be public accessable wıthout password
         grafana:
+          grafana.ini:
+            auth.anonymous:
+              enabled: true
+              org_role: Admin
           nodeSelector:
             role: master
+
         alertmanager:
           enabled: false
         prometheusOperator:
