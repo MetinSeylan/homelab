@@ -17,7 +17,7 @@ spec:
         nodeSelector:
           role: master
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 21.1.2
+    targetRevision: 15.1.6
   syncPolicy:
     syncOptions:
       - ServerSideApply=true
