@@ -22,7 +22,7 @@ spec:
               additionalLabels:
                 release: prometheus-stack
           nodeSelector:
-            role: master
+            worker: true
     repoURL: https://kubernetes.github.io/ingress-nginx
     targetRevision: "4.6.0"
   syncPolicy:

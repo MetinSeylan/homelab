@@ -22,3 +22,8 @@
   shell: kubectl taint nodes master node-role.kubernetes.io/control-plane:NoSchedule-
   environment:
     KUBECONFIG: /etc/kubernetes/admin.conf
+
+- name: add label to workers
+  shell: kubectl label node node1 worker=true && kubectl label node node2 worker=true
+  environment:
+    KUBECONFIG: /etc/kubernetes/admin.conf
