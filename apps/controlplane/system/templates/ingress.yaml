@@ -15,7 +15,7 @@ spec:
     helm:
       values: |
         controller:
-          replicaCount: 0
+          replicaCount: 2
           affinity:
            podAntiAffinity:
              preferredDuringSchedulingIgnoredDuringExecution:
