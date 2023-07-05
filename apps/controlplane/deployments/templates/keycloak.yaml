@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: keycloak
+  namespace: argo-cd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: keycloak
+  project: default
+  source:
+    chart: keycloak
+    helm:
+      values: |
+        nodeSelector:
+          role: master
+    repoURL: oci://registry-1.docker.io/bitnamicharts
+    targetRevision: 21.1.2
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=true
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
