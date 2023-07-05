@@ -1,3 +1,7 @@
+- name: Remove the first line
+  ansible.builtin.shell: "sed -i '1d' /etc/apt/sources.list"
+  become: yes
+
 - name: Install CLI Tools
   ansible.builtin.apt:
     update_cache: yes
