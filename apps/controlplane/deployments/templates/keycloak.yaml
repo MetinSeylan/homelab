@@ -16,7 +16,7 @@ spec:
       values: |
         nodeSelector:
           role: master
-    repoURL: oci://registry-1.docker.io/bitnamicharts
+    repoURL: https://charts.bitnami.com/bitnami
     targetRevision: 21.1.2
   syncPolicy:
     syncOptions:
