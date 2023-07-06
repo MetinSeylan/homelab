@@ -22,6 +22,8 @@ spec:
             password: "keycloak"
             database: "keycloak"
           storageClass: local-storage
+          existingClaim: keycloak-pv
+          storageClass: local-storage
           persistence:
             enabled: true
             existingClaim: keycloak-pv
