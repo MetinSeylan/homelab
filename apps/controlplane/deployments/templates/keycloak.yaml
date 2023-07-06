@@ -15,7 +15,6 @@ spec:
     helm:
       values: |
         production: true
-        proxy: edge
         postgresql:
           enabled: true
           auth:
