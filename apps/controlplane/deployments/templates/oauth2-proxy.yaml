@@ -54,7 +54,7 @@ spec:
               service:
                 name: keycloak
                 port:
-                  number: 443
+                  number: 80
     - host: auth.metin.sh
       http:
         paths:
