@@ -43,25 +43,26 @@ kind: Ingress
 metadata:
   name: ingress-public
   namespace: ingress-nginx
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   rules:
     - host: sso.metin.sh
       http:
         paths:
-          - path: /oauth2(/|$)(.*)
-            pathType: Prefix
-            backend:
-              service:
-                name: oauth2-proxy
-                port:
-                  number: 80
-          - path: /sso(/|$)(.*)
+          - path: /
             pathType: Prefix
             backend:
               service:
                 name: keycloak
+                port:
+                  number: 80
+    - host: auth.metin.sh
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: oauth2-proxy
                 port:
                   number: 80
   ingressClassName: nginx
