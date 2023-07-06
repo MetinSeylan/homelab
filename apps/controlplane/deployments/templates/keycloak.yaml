@@ -22,10 +22,11 @@ spec:
             password: "keycloak"
             database: "keycloak"
           storageClass: local-storage
-          persistence:
-            enabled: true
-            existingClaim: keycloak-pv
-            storageClass: local-storage
+          primary:
+            persistence:
+              enabled: true
+              existingClaim: keycloak-pv
+              storageClass: local-storage
           nodeSelector:
             role: master
         nodeSelector:
