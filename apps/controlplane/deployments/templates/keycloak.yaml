@@ -15,6 +15,11 @@ spec:
     helm:
       values: |
         production: true
+        proxy: edge
+        tls:
+          enabled: true
+          termination: edge
+          insecureEdgeTerminationPolicy: Redirect
         postgresql:
           enabled: true
           auth:
