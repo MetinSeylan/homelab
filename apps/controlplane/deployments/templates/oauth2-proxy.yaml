@@ -45,20 +45,17 @@ metadata:
   namespace: ingress-nginx
 spec:
   rules:
-    - host: login.metin.sh
+    - host: sso.metin.sh
       http:
         paths:
-          - path: /
+          - path: /oauth2
             pathType: Prefix
             backend:
               service:
                 name: oauth2-proxy
                 port:
                   number: 80
-    - host: sso.metin.sh
-      http:
-        paths:
-          - path: /
+          - path: /sso
             pathType: Prefix
             backend:
               service:
