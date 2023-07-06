@@ -14,8 +14,10 @@ spec:
     chart: oauth2-proxy
     helm:
       values: |
-          nodeSelector:
-            worker: "true"
+        config:
+          clientID: "homelab"
+        nodeSelector:
+          worker: "true"
     repoURL: https://oauth2-proxy.github.io/manifests
     targetRevision: "6.13.1"
   syncPolicy:
@@ -51,6 +53,16 @@ spec:
             backend:
               service:
                 name: oauth2-proxy
+                port:
+                  number: 80
+    - host: sso.metin.sh
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: keycloak
                 port:
                   number: 80
   ingressClassName: nginx

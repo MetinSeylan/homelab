@@ -80,3 +80,15 @@ spec:
   storageClassName: local-storage
   volumeMode: Filesystem
   volumeName: keycloak-pv
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: keycloak
+  namespace: ingress-nginx
+spec:
+  type: ExternalName
+  externalName: keycloak.keycloak.svc.cluster.local
+  ports:
+    - port: 80
