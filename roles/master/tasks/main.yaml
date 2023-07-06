@@ -27,9 +27,9 @@
     path: /storage/nvme/prometheus
     state: directory
 
-- name: Creates grafana directory
+- name: Creates keycloak postgres directory
   file:
-    path: /storage/nvme/grafana
+    path: /storage/nvme/keycloak_postgres
     state: directory
 
 - name: Get join token
