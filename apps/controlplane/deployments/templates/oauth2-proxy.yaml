@@ -46,7 +46,7 @@ spec:
     - host: login.metin.sh
       http:
         paths:
-          - path: /oauth2/callback
+          - path: /
             pathType: Prefix
             backend:
               service:
