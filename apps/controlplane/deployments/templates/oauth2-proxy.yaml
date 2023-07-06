@@ -14,8 +14,8 @@ spec:
     chart: oauth2-proxy
     helm:
       values: |
-        nodeSelector:
-          worker: "true"
+          nodeSelector:
+            worker: "true"
     repoURL: https://oauth2-proxy.github.io/manifests
     targetRevision: "6.13.1"
   syncPolicy:
