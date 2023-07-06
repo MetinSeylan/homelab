@@ -25,7 +25,7 @@ spec:
           primary:
             persistence:
               enabled: true
-              existingClaim: keycloak-pv
+              existingClaim: keycloak-pv-claim
               storageClass: local-storage
             nodeSelector:
               role: master
@@ -63,3 +63,18 @@ spec:
               operator: In
               values:
                 - master
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: keycloak-pv-claim
+  namespace: keycloak
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 8Gi
+  storageClassName: local-storage
+  volumeMode: Filesystem
+  volumeName: keycloak-pv
