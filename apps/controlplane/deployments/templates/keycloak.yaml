@@ -15,14 +15,12 @@ spec:
     helm:
       values: |
         postgres:
-          enabled: true
+          enabled: false
           auth:
             postgresPassword: "keycloak"
             username: "keycloak"
             password: "keycloak"
             database: "keycloak"
-          storageClass: local-storage
-          existingClaim: keycloak-pv
           storageClass: local-storage
           persistence:
             enabled: true
