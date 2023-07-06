@@ -24,7 +24,6 @@ spec:
           storageClass: local-storage
           persistence:
             enabled: true
-            size: 4Gi
             existingClaim: keycloak-pv
             storageClass: local-storage
           nodeSelector:
@@ -48,7 +47,7 @@ metadata:
   namespace: keycloak
 spec:
   capacity:
-    storage: 4Gi
+    storage: 8Gi
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
