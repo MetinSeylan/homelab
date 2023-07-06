@@ -48,14 +48,14 @@ spec:
     - host: sso.metin.sh
       http:
         paths:
-          - path: /oauth2
+          - path: /oauth2(/|$)(.*)
             pathType: Prefix
             backend:
               service:
                 name: oauth2-proxy
                 port:
                   number: 80
-          - path: /sso
+          - path: /sso(/|$)(.*)
             pathType: Prefix
             backend:
               service:
