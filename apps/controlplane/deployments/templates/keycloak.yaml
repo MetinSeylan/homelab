@@ -27,8 +27,8 @@ spec:
               enabled: true
               existingClaim: keycloak-pv
               storageClass: local-storage
-          nodeSelector:
-            role: master
+            nodeSelector:
+              role: master
         nodeSelector:
           role: master
     repoURL: https://charts.bitnami.com/bitnami
