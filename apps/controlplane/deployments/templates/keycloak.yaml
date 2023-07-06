@@ -14,8 +14,8 @@ spec:
     chart: keycloak
     helm:
       values: |
-        postgres:
-          enabled: false
+        postgresql:
+          enabled: true
           auth:
             postgresPassword: "keycloak"
             username: "keycloak"
