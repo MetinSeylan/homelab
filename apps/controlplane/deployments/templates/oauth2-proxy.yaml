@@ -43,6 +43,8 @@ kind: Ingress
 metadata:
   name: ingress-public
   namespace: ingress-nginx
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   rules:
     - host: sso.metin.sh
