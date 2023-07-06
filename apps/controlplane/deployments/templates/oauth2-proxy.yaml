@@ -24,3 +24,22 @@ spec:
       selfHeal: true
     syncOptions:
     - CreateNamespace=true
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-public
+  namespace: ingress-nginx
+spec:
+  rules:
+    - host: login.metin.sh
+      http:
+        paths:
+          - path: /oauth2/callback
+            pathType: Prefix
+            backend:
+              service:
+                name: oauth2-proxy
+                port:
+                  number: 80
+  ingressClassName: nginx
