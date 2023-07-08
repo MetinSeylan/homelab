@@ -17,7 +17,7 @@ spec:
         extraEnvVars:
           KC_HTTP_ENABLED: "true"
           KC_HOSTNAME_STRICT_BACKCHANNEL: "false"
-          KC_HOSTNAME_STRICT: "false"
+          KC_HOSTNAME_STRICT: "true"
           KC_STRICT_HTTPS: "false"
           KC_HOSTNAME: "sso.metin.sh"
         production: true
