@@ -161,7 +161,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: grafana-ingress
+  name: grafana-oauth2-ingress
   namespace: monitoring
   annotations:
     kubernetes.io/ingress.class: "nginx"
