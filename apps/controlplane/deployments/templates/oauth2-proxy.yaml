@@ -26,7 +26,7 @@ spec:
           hostname: auth.metin.sh
           tls: true
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: "6.13.1"
+    targetRevision: "3.7.4"
   syncPolicy:
     automated:
       prune: true
