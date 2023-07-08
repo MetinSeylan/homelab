@@ -14,7 +14,7 @@ spec:
     chart: keycloak
     helm:
       values: |
-        extraEnv: |
+        extraEnvVars: |
           - name: KC_HOSTNAME_ADMIN_URL
             value: "https://sso.metin.sh"
           - name: KC_HOSTNAME_URL
