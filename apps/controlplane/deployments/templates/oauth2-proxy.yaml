@@ -15,13 +15,13 @@ spec:
     helm:
       values: |
         configuration:
-          clientID: "homelab"
+          clientID: "grafana"
           clientSecret: "RBfar2G7zvSeLX6dvV9lvEZGs1oYLIfM"
           content: |
             email_domains=["*"]
             client_secret="RBfar2G7zvSeLX6dvV9lvEZGs1oYLIfM"
-            client_id="homelab"
-            redirect_url="https://sso.metin.sh/admin/master/console/"
+            client_id="grafana"
+            redirect_url="https://grafana.metin.sh/"
             oidc_issuer_url="https://sso.metin.sh/realms/master"
             provider="oidc"
             provider_display_name="Homelab"
