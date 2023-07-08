@@ -14,6 +14,17 @@ spec:
     chart: harbor
     helm:
       values: |
+        registry:
+          nodeSelector:
+            role: master
+        redis:
+            internal:
+              nodeSelector:
+                  role: master
+        database:
+            internal:
+              nodeSelector:
+                  role: master
         persistence:
           enabled: true
           persistentVolumeClaim:
