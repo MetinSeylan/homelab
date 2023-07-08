@@ -14,6 +14,9 @@ spec:
     chart: harbor
     helm:
       values: |
+        metrics:
+          serviceMonitor:
+            enabled: true
         trivy:
             enabled: false
         registry:
