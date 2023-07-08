@@ -17,7 +17,10 @@ spec:
         persistence:
           enabled: false
         expose:
+            tls:
+              enabled: false
             ingress:
+              controller: nginx
               annotations:
                 kubernetes.io/ingress.class: nginx
                 ingress.kubernetes.io/ssl-redirect: "false"
