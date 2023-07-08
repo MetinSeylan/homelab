@@ -15,9 +15,10 @@ spec:
     helm:
       values: |
         configuration:
+          clientID: "homelab"
+          clientSecret: "RBfar2G7zvSeLX6dvV9lvEZGs1oYLIfM"
           content: |
             email_domains=["*"]
-            # keycloak provider
             client_secret="RBfar2G7zvSeLX6dvV9lvEZGs1oYLIfM"
             client_id="homelab"
             redirect_url="https://auth.metin.sh/oauth2/callback"
