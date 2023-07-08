@@ -20,7 +20,7 @@ spec:
           content: |
             email_domains=["*"]
             client_secret="RBfar2G7zvSeLX6dvV9lvEZGs1oYLIfM"
-            client_id="grafana"
+            client_id="prometheus"
             redirect_url="https://prometheus.metin.sh/oauth2/callback"
             oidc_issuer_url="https://sso.metin.sh/realms/master"
             provider="oidc"
