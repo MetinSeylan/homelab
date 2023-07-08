@@ -36,6 +36,7 @@ spec:
           annotations:
             kubernetes.io/ingress.class: nginx
           hostname: auth.metin.sh
+          path: /oauth2
           tls: true
     repoURL: https://charts.bitnami.com/bitnami
     targetRevision: "3.7.4"
