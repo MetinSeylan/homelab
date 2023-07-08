@@ -1,0 +1,95 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    kubernetes.io/metadata.name: monitoring
+    name: monitoring
+  name: monitoring
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus-stack
+  namespace: argo-cd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  project: default
+  source:
+    chart: kube-prometheus-stack
+    helm:
+      values: |
+        grafana:
+          ingress:
+            enabled: true
+            annotations:
+              nginx.ingress.kubernetes.io/auth-url: "https://oauth2-proxy.keycloak.svc.cluster.local/oauth2/auth"
+              nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
+              nginx.ingress.kubernetes.io/auth-response-headers: "x-auth-request-user, x-auth-request-email"
+            hosts:
+              - grafana.metin.sh
+          grafana.ini:
+            users:
+              viewers_can_edit: true
+            auth:
+              disable_login_form: true
+              disable_signout_menu: true
+            auth.anonymous:
+              enabled: true
+              org_role: Admin
+          nodeSelector:
+            role: master
+
+        alertmanager:
+          enabled: false
+        prometheusOperator:
+          nodeSelector:
+            role: master
+        prometheus:
+          prometheusSpec:
+            storageSpec:
+              volumeClaimTemplate:
+                spec:
+                  storageClassName: local-storage
+                  accessModes: ["ReadWriteOnce"]
+                  resources:
+                    requests:
+                      storage: 8Gi
+            nodeSelector:
+              role: master
+    repoURL: https://prometheus-community.github.io/helm-charts
+    targetRevision: 45.19.0
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=true
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: prometheus-pv
+  namespace: monitoring
+spec:
+  capacity:
+    storage: 8Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /storage/nvme/prometheus
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - master
