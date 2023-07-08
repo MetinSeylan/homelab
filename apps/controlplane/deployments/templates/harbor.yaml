@@ -15,6 +15,7 @@ spec:
     helm:
       values: |
         persistence:
+          enabled: true
           persistentVolumeClaim:
             registry:
                existingClaim: harbor-registry-pvc
