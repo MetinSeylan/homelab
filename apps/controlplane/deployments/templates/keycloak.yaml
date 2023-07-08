@@ -15,8 +15,6 @@ spec:
     helm:
       values: |
         production: true
-        tls:
-          enabled: true
         proxy: edge
         postgresql:
           enabled: true
