@@ -16,9 +16,6 @@ spec:
       values: |
         production: true
         proxy: edge
-        extraEnv: |
-          - name: KC_PROXY_ADDRESS_FORWARDING
-            value: "true"
         postgresql:
           enabled: true
           auth:
