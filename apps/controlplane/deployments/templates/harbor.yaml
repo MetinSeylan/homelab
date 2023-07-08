@@ -41,7 +41,8 @@ spec:
             redis:
                existingClaim: harbor-redis-pvc
             jobservice:
-               existingClaim: harbor-jobs-pvc
+              jobLog:
+                existingClaim: harbor-jobs-pvc
 
         expose:
             tls:
