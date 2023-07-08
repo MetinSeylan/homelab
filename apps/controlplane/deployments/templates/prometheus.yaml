@@ -153,6 +153,6 @@ spec:
             path: "/oauth2"
             backend:
               service:
-                name: grafana-oauth-proxy
+                name: grafana-oauth-proxy-oauth2-proxy
                 port:
                   number: 80
