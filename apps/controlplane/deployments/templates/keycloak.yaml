@@ -14,10 +14,9 @@ spec:
     chart: keycloak
     helm:
       values: |
-        extraEnvVars:
-          KC_STRICT_HTTPS: "true"
-          KEYCLOAK_ENABLE_HTTPS: "true"
         production: true
+        tls:
+          enabled: true
         proxy: edge
         postgresql:
           enabled: true
