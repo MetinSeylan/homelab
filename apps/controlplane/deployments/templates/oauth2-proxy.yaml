@@ -16,7 +16,7 @@ spec:
       values: |
         configuration:
           content: |
-            email_domains=["metin.sh"]
+            email_domains=["*"]
             # keycloak provider
             client_secret="RBfar2G7zvSeLX6dvV9lvEZGs1oYLIfM"
             client_id="homelab"
