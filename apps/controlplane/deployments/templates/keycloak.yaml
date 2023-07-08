@@ -16,8 +16,8 @@ spec:
       values: |
         production: true
         extraEnvVars:
-          key: "KC_STRICT_HTTPS"
-          value: "true"
+          - name: "KC_STRICT_HTTPS"
+            value: "true"
         proxy: edge
         postgresql:
           enabled: true
