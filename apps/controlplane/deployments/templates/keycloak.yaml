@@ -15,14 +15,7 @@ spec:
     helm:
       values: |
         production: true
-        extraEnvVars:
-          - name: PROXY_ADDRESS_FORWARDING
-            value: "true"
-          - name: KEYCLOAK_HOSTNAME
-            value: "sso.metin.sh"
-          - name: KEYCLOAK_HTTPS_PORT
-            value: 443
-        proxy: edge
+        proxy: reencrypt
         postgresql:
           enabled: true
           auth:
