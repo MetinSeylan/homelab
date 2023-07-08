@@ -31,7 +31,7 @@ spec:
             registry:
                existingClaim: harbor-registry-pvc
             database:
-               existingClaim: harbor-database-pvc
+               existingClaim: harbor-db-pvc
             redis:
                existingClaim: harbor-redis-pvc
 
