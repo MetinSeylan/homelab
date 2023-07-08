@@ -18,6 +18,8 @@ spec:
           enabled: false
         expose:
             ingress:
+              annotations:
+                kubernetes.io/ingress.class: nginx
               hosts:
                 core: harbor-core.metin.sh
                 notary: harbor-notary.metin.sh
