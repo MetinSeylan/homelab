@@ -15,7 +15,7 @@ spec:
     helm:
       values: |
         production: true
-        proxy: reencrypt
+        proxy: edge
         postgresql:
           enabled: true
           auth:
