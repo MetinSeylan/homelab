@@ -15,9 +15,6 @@ spec:
     helm:
       values: |
         production: true
-        extraEnvVars:
-          - name: KC_STRICT_HTTPS
-            value: "true"
         proxy: edge
         postgresql:
           enabled: true
