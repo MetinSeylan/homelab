@@ -24,7 +24,7 @@ spec:
             redirect_url="https://grafana.metin.sh"
             oidc_issuer_url="https://sso.metin.sh/realms/master"
             provider="oidc"
-            provider_display_name="Homelab"
+            provider_display_name="Grafana"
 
         nodeSelector:
           worker: "true"
