@@ -1,0 +1,84 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus-oauth-proxy
+  namespace: argo-cd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  project: default
+  source:
+    chart: oauth2-proxy
+    helm:
+      values: |
+        configuration:
+          clientID: "prometheus"
+          clientSecret: "RBfar2G7zvSeLX6dvV9lvEZGs1oYLIfM"
+          content: |
+            email_domains=["*"]
+            client_secret="RBfar2G7zvSeLX6dvV9lvEZGs1oYLIfM"
+            client_id="grafana"
+            redirect_url="https://prometheus.metin.sh/oauth2/callback"
+            oidc_issuer_url="https://sso.metin.sh/realms/master"
+            provider="oidc"
+            provider_display_name="Prometheus"
+
+        nodeSelector:
+          worker: "true"
+        redis:
+          enabled: false
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: "3.7.4"
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: prometheus-ingress
+  namespace: monitoring
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/auth-url: "http://prometheus-oauth-proxy-oauth2-proxy.monitoring.svc.cluster.local/oauth2/auth"
+    nginx.ingress.kubernetes.io/auth-signin: "https://prometheus.metin.sh/oauth2/start?rd=$escaped_request_uri"
+spec:
+  rules:
+    - host: prometheus.metin.sh
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: prometheus-operated
+                port:
+                  number: 80
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: prometheus-oauth2-ingress
+  namespace: monitoring
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+    - host: prometheus.metin.sh
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/oauth2"
+            backend:
+              service:
+                name: prometheus-oauth-proxy-oauth2-proxy
+                port:
+                  number: 80
