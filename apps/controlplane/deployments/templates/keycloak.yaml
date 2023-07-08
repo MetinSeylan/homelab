@@ -14,6 +14,11 @@ spec:
     chart: keycloak
     helm:
       values: |
+        extraEnv: |
+          - name: KC_HOSTNAME_ADMIN_URL
+            value: "https://sso.metin.sh"
+          - name: KC_HOSTNAME_URL
+            value: "https://sso.metin.sh"
         production: true
         proxy: edge
         postgresql:
