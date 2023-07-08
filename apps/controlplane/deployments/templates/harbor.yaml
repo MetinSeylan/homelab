@@ -84,6 +84,22 @@ spec:
                 - master
 ---
 apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: harbor-db-pvc
+  namespace: harbor
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: local-storage
+  volumeMode: Filesystem
+  volumeName: harbor-db-pv
+
+---
+apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: harbor-registry-pv
@@ -108,6 +124,22 @@ spec:
 
 ---
 apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: harbor-registry-pvc
+  namespace: harbor
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 16Gi
+  storageClassName: local-storage
+  volumeMode: Filesystem
+  volumeName: harbor-registry-pv
+
+---
+apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: harbor-redis-pv
@@ -129,3 +161,18 @@ spec:
               operator: In
               values:
                 - master
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: harbor-redis-pvc
+  namespace: harbor
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: local-storage
+  volumeMode: Filesystem
+  volumeName: harbor-redis-pv
