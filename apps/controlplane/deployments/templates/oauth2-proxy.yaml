@@ -14,8 +14,8 @@ spec:
     chart: oauth2-proxy
     helm:
       values: |
-        config:
-          clientID: "homelab"
+        redis:
+          enabled: "false"
         nodeSelector:
           worker: "true"
         ingress:
