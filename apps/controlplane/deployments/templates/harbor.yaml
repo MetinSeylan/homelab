@@ -15,7 +15,14 @@ spec:
     helm:
       values: |
         persistence:
-          enabled: false
+          persistentVolumeClaim:
+            registry:
+               existingClaim: harbor-registry-pvc
+            database:
+               existingClaim: harbor-database-pvc
+            redis:
+               existingClaim: harbor-redis-pvc
+
         expose:
             tls:
               enabled: false
@@ -39,3 +46,74 @@ spec:
       selfHeal: true
     syncOptions:
     - CreateNamespace=true
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: harbor-db-pv
+  namespace: harbor
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /storage/nvme/harbor/database
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - master
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: harbor-registry-pv
+  namespace: harbor
+spec:
+  capacity:
+    storage: 16Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /storage/nvme/harbor/registry
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - master
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: harbor-redis-pv
+  namespace: harbor
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /storage/nvme/harbor/redis
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - master

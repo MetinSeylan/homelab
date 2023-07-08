@@ -32,6 +32,21 @@
     path: /storage/nvme/keycloak_postgres
     state: directory
 
+- name: Creates harbor db directory
+  file:
+    path: /storage/nvme/harbor/database
+    state: directory
+
+- name: Creates harbor registry directory
+  file:
+    path: /storage/nvme/harbor/registry
+    state: directory
+
+- name: Creates harbor redis directory
+  file:
+    path: /storage/nvme/harbor/redis
+    state: directory
+
 - name: Get join token
   shell: sudo kubeadm token create  --print-join-command
   register: kubernetes_join_command
