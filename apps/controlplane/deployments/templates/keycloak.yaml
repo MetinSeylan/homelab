@@ -16,10 +16,12 @@ spec:
       values: |
         production: true
         extraEnvVars:
-          - name: KC_STRICT_HTTPS
+          - name: PROXY_ADDRESS_FORWARDING
             value: "true"
-          - name: KC_ENABLE_HTTPS
-            value: "true"
+          - name: KEYCLOAK_HOSTNAME
+            value: "sso.metin.sh"
+          - name: KEYCLOAK_HTTPS_PORT
+            value: 443
         proxy: edge
         postgresql:
           enabled: true
