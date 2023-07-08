@@ -15,7 +15,7 @@ spec:
     helm:
       values: |
         redis:
-          enabled: "false"
+          enabled: false
         nodeSelector:
           worker: "true"
         ingress:
