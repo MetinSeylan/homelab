@@ -15,10 +15,12 @@ spec:
     helm:
       values: |
         configuration:
-          clientID: "homelab"
-          clientSecret: "5acWC1AgeHqMHoxDMFYXvNTRFp8ogMTX"
-          redirectURL: "https://auth.metin.sh/oauth2/callback"
-          oidcIssuerUrl: "https://sso.metin.sh/auth/realms/master"
+          content: |
+            provider = "keycloak-oidc"
+            client-id = "homelab"
+            client-secret = "5acWC1AgeHqMHoxDMFYXvNTRFp8ogMTX"
+            redirect-url = "https://auth.metin.sh/oauth2/callback"
+            oidc-issuer-url = "https://sso.metin.sh/auth/realms/master"
         nodeSelector:
           worker: "true"
         redis:
