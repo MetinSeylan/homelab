@@ -14,10 +14,10 @@ spec:
     chart: oauth2-proxy
     helm:
       values: |
-        redis:
-          enabled: false
         nodeSelector:
           worker: "true"
+        redis:
+          enabled: false
         ingress:
           enabled: true
           certManager: false
