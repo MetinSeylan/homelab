@@ -21,7 +21,7 @@ spec:
             email_domains=["*"]
             client_secret="RBfar2G7zvSeLX6dvV9lvEZGs1oYLIfM"
             client_id="grafana"
-            redirect_url="https://auth.metin.sh/oauth2/callback"
+            redirect_url="https://grafana.metin.sh"
             oidc_issuer_url="https://sso.metin.sh/realms/master"
             provider="oidc"
             provider_display_name="Grafana"
