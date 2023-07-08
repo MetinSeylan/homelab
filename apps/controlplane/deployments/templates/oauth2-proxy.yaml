@@ -45,16 +45,6 @@ metadata:
   namespace: ingress-nginx
 spec:
   rules:
-    - host: sso.metin.sh
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: keycloak
-                port:
-                  number: 80
     - host: auth.metin.sh
       http:
         paths:
