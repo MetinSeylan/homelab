@@ -18,6 +18,13 @@ spec:
           clientID: "homelab"
         nodeSelector:
           worker: "true"
+        ingress:
+          enabled: true
+          certManager: false
+          annotations:
+            kubernetes.io/ingress.class: nginx
+          hostname: auth.metin.sh
+          tls: true
     repoURL: https://oauth2-proxy.github.io/manifests
     targetRevision: "6.13.1"
   syncPolicy:
@@ -37,22 +44,3 @@ spec:
   externalName: oauth2-proxy.keycloak.svc.cluster.local
   ports:
     - port: 80
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: ingress-public
-  namespace: ingress-nginx
-spec:
-  rules:
-    - host: auth.metin.sh
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: oauth2-proxy
-                port:
-                  number: 80
-  ingressClassName: nginx
