@@ -12,7 +12,6 @@ spec:
   project: default
   source:
     chart: harbor
-
     repoURL: https://helm.goharbor.io
     targetRevision: "1.12.2"
   syncPolicy:
