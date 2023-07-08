@@ -42,7 +42,7 @@ spec:
             nginx.ingress.kubernetes.io/secure-backends: "true"
             nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
           hostname: sso.metin.sh
-          tls: false
+          tls: true
     repoURL: https://charts.bitnami.com/bitnami
     targetRevision: 15.1.6
   syncPolicy:
