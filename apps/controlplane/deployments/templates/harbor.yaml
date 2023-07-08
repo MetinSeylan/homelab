@@ -16,6 +16,12 @@ spec:
       values: |
         persistence:
           enabled: false
+        expose:
+            ingress:
+              hosts:
+                core: harbor-core.metin.sh
+                notary: harbor-notary.metin.sh
+
     repoURL: https://helm.goharbor.io
     targetRevision: "1.12.2"
   syncPolicy:
