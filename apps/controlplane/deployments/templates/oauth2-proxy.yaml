@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: oauth2-proxy
+  namespace: argo-cd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: keycloak
+  project: default
+  source:
+    chart: oauth2-proxy
+    helm:
+      values: |
+        configuration:
+          clientID: "homelab"
+          clientSecret: "5acWC1AgeHqMHoxDMFYXvNTRFp8ogMTX"
+          redirectURL: "https://auth.metin.sh/oauth2/callback"
+          oidcIssuerUrl: "https://sso.metin.sh/auth/realms/master"
+        nodeSelector:
+          worker: "true"
+        redis:
+          enabled: false
+        ingress:
+          enabled: true
+          certManager: false
+          annotations:
+            kubernetes.io/ingress.class: nginx
+          hostname: auth.metin.sh
+          tls: true
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: "3.7.4"
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
