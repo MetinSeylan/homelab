@@ -149,13 +149,6 @@ spec:
                 name: prometheus-stack-grafana
                 port:
                   number: 80
-          - pathType: Prefix
-            path: "/oauth2"
-            backend:
-              service:
-                name: grafana-oauth-proxy-oauth2-proxy
-                port:
-                  number: 80
 
 ---
 apiVersion: networking.k8s.io/v1
