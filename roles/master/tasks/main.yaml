@@ -47,6 +47,11 @@
     path: /storage/nvme/harbor/redis
     state: directory
 
+- name: Creates harbor jobs directory
+  file:
+    path: /storage/nvme/harbor/jobs
+    state: directory
+
 - name: Get join token
   shell: sudo kubeadm token create  --print-join-command
   register: kubernetes_join_command

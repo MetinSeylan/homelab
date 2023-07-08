@@ -27,6 +27,10 @@ spec:
             internal:
               nodeSelector:
                   role: master
+        jobservice:
+            internal:
+              nodeSelector:
+                  role: master
         persistence:
           enabled: true
           persistentVolumeClaim:
@@ -36,6 +40,8 @@ spec:
                existingClaim: harbor-db-pvc
             redis:
                existingClaim: harbor-redis-pvc
+            jobservice:
+               existingClaim: harbor-jobs-pvc
 
         expose:
             tls:
@@ -178,3 +184,42 @@ spec:
   storageClassName: local-storage
   volumeMode: Filesystem
   volumeName: harbor-redis-pv
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: harbor-jobs-pv
+  namespace: harbor
+spec:
+  capacity:
+    storage: 8Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /storage/nvme/harbor/jobs
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - master
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: harbor-jobs-pvc
+  namespace: harbor
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 8Gi
+  storageClassName: local-storage
+  volumeMode: Filesystem
+  volumeName: harbor-jobs-pv
