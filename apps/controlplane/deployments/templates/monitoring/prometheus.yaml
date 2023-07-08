@@ -16,7 +16,7 @@ spec:
       values: |
         configuration:
           clientID: "prometheus"
-          clientSecret: "RBfar2G7zvSeLX6dvV9lvEZGs1oYLIfM"
+          clientSecret: "17QbZ2RfjtD7fSUzvfFjX4rnyDOynBEa"
           content: |
             email_domains=["*"]
             client_secret="RBfar2G7zvSeLX6dvV9lvEZGs1oYLIfM"
