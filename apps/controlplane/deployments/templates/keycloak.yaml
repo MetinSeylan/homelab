@@ -16,6 +16,9 @@ spec:
       values: |
         production: true
         proxy: edge
+        extraEnv: |
+          - name: PROXY_ADDRESS_FORWARDING
+            value: "true"
         postgresql:
           enabled: true
           auth:
