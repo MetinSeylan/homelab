@@ -14,6 +14,9 @@ spec:
     chart: rabbitmq
     helm:
       values: |
+        auth:
+          username: guest
+          password: guest
         persistence:
           enabled: true
           existingClaim: rabbitmq-pvc
