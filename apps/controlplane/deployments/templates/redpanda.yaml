@@ -24,7 +24,7 @@ spec:
           enabled: true
         statefulset:
           replicas: 2
-    repoURL: https://charts.redpanda.com
+    repoURL: https://charts.vectorized.io/
     targetRevision: "4.0.52"
   syncPolicy:
     automated:
