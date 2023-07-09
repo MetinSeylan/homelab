@@ -24,7 +24,7 @@ spec:
           enabled: true
         statefulset:
           replicas: 2
-    repoURL: https://github.com/redpanda-data/helm-charts
+    repoURL: https://charts.redpanda.com
     targetRevision: "*"
   syncPolicy:
     automated:
