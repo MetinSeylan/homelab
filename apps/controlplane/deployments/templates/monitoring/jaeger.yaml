@@ -2,13 +2,13 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: jaeger
-  namespace: monitoring
+  namespace: argo-cd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: jaeger
+    namespace: monitoring
   project: default
   source:
     chart: jaeger
