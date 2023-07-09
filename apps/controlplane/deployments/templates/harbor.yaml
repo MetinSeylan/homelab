@@ -64,8 +64,7 @@ spec:
 
 
               hosts:
-                core: harbor-core.metin.sh
-                notary: harbor-notary.metin.sh
+                core: harbor.metin.sh
 
     repoURL: https://helm.goharbor.io
     targetRevision: "1.12.2"
