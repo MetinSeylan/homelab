@@ -11,7 +11,7 @@ spec:
     namespace: redpanda
   project: default
   source:
-    chart: redpanda-data/redpanda
+    chart: redpanda
     helm:
       values: |
         console:
@@ -24,8 +24,8 @@ spec:
           enabled: true
         statefulset:
           replicas: 2
-    repoURL: https://charts.redpanda.com/
-    targetRevision: "4.0.10"
+    repoURL: https://github.com/redpanda-data/helm-charts
+    targetRevision: "*"
   syncPolicy:
     automated:
       prune: true
