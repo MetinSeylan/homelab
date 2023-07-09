@@ -22,6 +22,9 @@ spec:
         registry:
           nodeSelector:
             role: master
+        core:
+          nodeSelector:
+            role: master
         notary:
           enabled: false
         portal:
