@@ -22,6 +22,11 @@ spec:
         registry:
           nodeSelector:
             role: master
+        notary:
+          enabled: false
+        portal:
+          nodeSelector:
+            role: master
         redis:
             internal:
               nodeSelector:
