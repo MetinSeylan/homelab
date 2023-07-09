@@ -15,8 +15,11 @@ spec:
     helm:
       values: |
         metrics:
+          enabled: true
           serviceMonitor:
-            enabled: true
+              enabled: true
+              additionalLabels:
+                release: prometheus-stack
         trivy:
             enabled: false
         registry:

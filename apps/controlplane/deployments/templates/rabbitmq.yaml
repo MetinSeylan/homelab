@@ -25,10 +25,9 @@ spec:
         metrics:
           enabled: true
           serviceMonitor:
-            enabled: true
-            namespace: rabbitmq
-            additionalLabels:
-              release: rabbitmq
+              enabled: true
+              additionalLabels:
+                release: prometheus-stack
     repoURL: https://charts.bitnami.com/bitnami
     targetRevision: "12.0.4"
   syncPolicy:
