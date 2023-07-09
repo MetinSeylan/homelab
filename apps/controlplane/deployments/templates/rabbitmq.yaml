@@ -11,7 +11,7 @@ spec:
     namespace: rabbitmq
   project: default
   source:
-    chart: bitnami/rabbitmq
+    chart: rabbitmq
     helm:
       values: |
         persistence:
