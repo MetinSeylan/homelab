@@ -23,7 +23,7 @@ spec:
         monitoring:
           enabled: true
         statefulset:
-          replicas: 2
+          replicas: 1
     repoURL: https://charts.redpanda.com
     targetRevision: "*"
   syncPolicy:
