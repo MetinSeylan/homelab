@@ -25,7 +25,7 @@ spec:
         statefulset:
           replicas: 2
     repoURL: https://charts.redpanda.com
-    targetRevision: "4.0.39"
+    targetRevision: "4.0.52"
   syncPolicy:
     automated:
       prune: true
