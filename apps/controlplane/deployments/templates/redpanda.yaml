@@ -24,7 +24,7 @@ spec:
           enabled: true
         statefulset:
           replicas: 2
-    repoURL: https://charts.redpanda.com
+    repoURL: https://charts.redpanda.com/redpanda-data
     targetRevision: "*"
   syncPolicy:
     automated:
