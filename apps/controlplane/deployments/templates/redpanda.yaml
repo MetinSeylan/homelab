@@ -24,6 +24,12 @@ spec:
           enabled: true
         statefulset:
           replicas: 1
+          nodeSelector:
+            role: node2
+        storage:
+            hostPath: "/storage/nvme/redpanda"
+            persistentVolume:
+              enabled: false
     repoURL: https://charts.redpanda.com
     targetRevision: "*"
   syncPolicy:
