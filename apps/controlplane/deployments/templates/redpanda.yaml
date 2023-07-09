@@ -11,7 +11,7 @@ spec:
     namespace: redpanda
   project: default
   source:
-    chart: redpanda/redpanda
+    chart: redpanda-data/redpanda
     helm:
       values: |
         console:
