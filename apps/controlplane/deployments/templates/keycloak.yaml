@@ -18,7 +18,7 @@ spec:
           enabled: true
           serviceMonitor:
             enabled: true
-            additionalLabels:
+            labels:
               release: prometheus-stack
         extraEnvVars: |
           - name: KC_HOSTNAME_ADMIN_URL
