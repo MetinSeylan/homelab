@@ -1,0 +1,66 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: redpanda
+  namespace: argo-cd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: redpanda
+  project: default
+  source:
+    chart: redpanda
+    helm:
+      values: |
+        console:
+          enabled: true
+        tls:
+          enabled: false
+        external:
+          enabled: false
+        monitoring:
+          enabled: true
+        statefulset:
+          replicas: 1
+          nodeSelector:
+            role: node2
+        storage:
+            persistentVolume:
+              enabled: true
+              size: 32Gi
+              storageClass: local-storage
+              accessModes:
+                - ReadWriteOnce
+    repoURL: https://charts.redpanda.com
+    targetRevision: "*"
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redpanda-pv
+  namespace: redpanda
+spec:
+  capacity:
+    storage: 32Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /storage/nvme/redpanda
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - node2
