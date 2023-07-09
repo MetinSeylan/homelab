@@ -22,6 +22,8 @@ spec:
           enabled: false
         monitoring:
           enabled: true
+          labels:
+            release: prometheus-stack
         statefulset:
           replicas: 1
           nodeSelector:
