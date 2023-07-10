@@ -23,6 +23,7 @@ spec:
         trivy:
             enabled: false
         registry:
+          relativeurls: true
           nodeSelector:
             role: master
         core:
