@@ -69,6 +69,7 @@ spec:
                 nginx.ingress.kubernetes.io/ssl-redirect: "false"
               hosts:
                 core: harbor.metin.sh
+        externalURL: https://harbor.metin.sh
     repoURL: https://helm.goharbor.io
     targetRevision: "1.12.2"
   syncPolicy:
