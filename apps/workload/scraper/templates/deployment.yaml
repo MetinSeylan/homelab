@@ -20,9 +20,23 @@ spec:
           ports:
             - containerPort: 80
           env:
+            - name: PORT
+              value: "80"
             - name: RABBITMQ_HOST
               value: "rabbitmq.rabbitmq.svc.cluster.local"
             - name: KAFKA_CLIENT_ID
               value: "scraper"
             - name: KAFKA_BOOTSTRAP_SERVERS
               value: "redpanda.redpanda.svc.cluster.local"
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 5
