@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: scraper
-          image: harbor.metin.sh/backend/backend:latest
+          image: harbor-registry/backend/backend:latest
           ports:
             - containerPort: 80
