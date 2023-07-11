@@ -27,7 +27,7 @@ spec:
             - name: KAFKA_CLIENT_ID
               value: "scraper"
             - name: KAFKA_BOOTSTRAP_SERVERS
-              value: "redpanda.redpanda.svc.cluster.local"
+              value: "redpanda.redpanda.svc.cluster.local:9644"
           livenessProbe:
             httpGet:
               path: /actuator/health
