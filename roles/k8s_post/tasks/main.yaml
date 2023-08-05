@@ -18,12 +18,32 @@
   environment:
     KUBECONFIG: /etc/kubernetes/admin.conf
 
+- name: add label to node3
+  shell: kubectl label node node3 role=node3
+  environment:
+    KUBECONFIG: /etc/kubernetes/admin.conf
+
+- name: add label to node4
+  shell: kubectl label node node4 role=node4
+  environment:
+    KUBECONFIG: /etc/kubernetes/admin.conf
+
+- name: add label to node5
+  shell: kubectl label node node5 role=node5
+  environment:
+    KUBECONFIG: /etc/kubernetes/admin.conf
+
 - name: allow master node to schedule pods
   shell: kubectl taint nodes master node-role.kubernetes.io/control-plane:NoSchedule-
   environment:
     KUBECONFIG: /etc/kubernetes/admin.conf
 
 - name: add label to workers
-  shell: kubectl label node node1 worker=true && kubectl label node node2 worker=true
+  shell: kubectl label node node1 type=worker && kubectl label node node2 type=worker && kubectl label node node3 type=worker && kubectl label node node4 type=worker && kubectl label node node5 type=worker
+  environment:
+    KUBECONFIG: /etc/kubernetes/admin.conf
+
+- name: add storage label to workers
+  shell: kubectl label node node1 storage=nvme && kubectl label node node2 storage=nvme && kubectl label node node3 storage=nvme
   environment:
     KUBECONFIG: /etc/kubernetes/admin.conf

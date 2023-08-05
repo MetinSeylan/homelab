@@ -1,6 +1,6 @@
 .POSIX:
 
-default: config master nodes post_install control_plane
+default: config master nodes post_install
 
 config:
 	ansible-playbook playbooks/configuration.yaml
@@ -16,5 +16,3 @@ post_install:
 
 control_plane:
 	ansible-playbook playbooks/control_plane.yaml
-
-

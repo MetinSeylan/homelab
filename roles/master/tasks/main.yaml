@@ -22,36 +22,6 @@
     remote_src: yes
 
 
-- name: Creates prometheus directory
-  file:
-    path: /storage/nvme/prometheus
-    state: directory
-
-- name: Creates keycloak postgres directory
-  file:
-    path: /storage/nvme/keycloak_postgres
-    state: directory
-
-- name: Creates harbor db directory
-  file:
-    path: /storage/nvme/harbor/database
-    state: directory
-
-- name: Creates harbor registry directory
-  file:
-    path: /storage/nvme/harbor/registry
-    state: directory
-
-- name: Creates harbor redis directory
-  file:
-    path: /storage/nvme/harbor/redis
-    state: directory
-
-- name: Creates harbor jobs directory
-  file:
-    path: /storage/nvme/harbor/jobs
-    state: directory
-
 - name: Get join token
   shell: sudo kubeadm token create  --print-join-command
   register: kubernetes_join_command
