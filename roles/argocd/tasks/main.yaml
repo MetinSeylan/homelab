@@ -1,0 +1,22 @@
+- name: Argocd Helm Repo
+  shell: helm repo add argo https://argoproj.github.io/argo-helm
+
+- name: Install Argocd
+  shell: |
+    echo "
+    global:
+      nodeSelector:
+        role: master
+    configs:
+      rbac:
+        policy.default: role:admin
+      cm:
+        users.anonymous.enabled: true
+    dex:
+      enabled: false
+    server:
+      extraArgs:
+        - --insecure
+    " | helm install argocd argo/argo-cd --version 5.43.7 --namespace argocd --create-namespace -f -
+  environment:
+    KUBECONFIG: /etc/kubernetes/admin.conf

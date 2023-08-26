@@ -4,6 +4,8 @@
 - name: Install Cilium
   shell: helm install cilium cilium/cilium --version 1.14.1 \
     --namespace kube-system \
+    --set hubble.relay.enabled=true \
+    --set hubble.ui.enabled=true \
     --set kubeProxyReplacement=true \
     --set k8sServiceHost=192.168.1.10 \
     --set k8sServicePort=6443

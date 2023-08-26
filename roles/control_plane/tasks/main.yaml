@@ -1,2 +1,0 @@
-- name: Install Argocd
-  ansible.builtin.include: argocd.yaml
