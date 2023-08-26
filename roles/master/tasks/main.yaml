@@ -1,5 +1,5 @@
 - name: Init Kubernetes Cluster
-  shell: kubeadm init --pod-network-cidr 10.244.0.0/16
+  shell: kubeadm init --skip-phases=addon/kube-proxy
   args:
     creates: "/etc/kubernetes/admin.conf"
 

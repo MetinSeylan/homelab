@@ -1,5 +1,2 @@
-- name: Install helm
-  ansible.builtin.include: helm.yaml
-
 - name: Install Argocd
   ansible.builtin.include: argocd.yaml

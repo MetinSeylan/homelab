@@ -1,5 +1,12 @@
-- name: Install Cluster Control Plane
+- name:
+  hosts: "master,node1,node2,node3,node4"
+  become: yes
+  roles:
+    - iptable
+
+- name: Install Helm and Cilium
   hosts: "master"
   become: yes
   roles:
-    - control_plane
+    - helm
+    - cilium

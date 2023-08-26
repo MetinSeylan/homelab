@@ -1,0 +1,11 @@
+- name: Cilium Helm Repo
+  shell: helm repo add cilium https://helm.cilium.io/
+
+- name: Install Cilium
+  shell: helm install cilium cilium/cilium --version 1.14.1 \
+    --namespace kube-system \
+    --set kubeProxyReplacement=true \
+    --set k8sServiceHost=192.168.1.10 \
+    --set k8sServicePort=6443
+  environment:
+    KUBECONFIG: /etc/kubernetes/admin.conf

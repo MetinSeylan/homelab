@@ -1,0 +1,2 @@
+- name: Setup iptables
+  shell: iptables-save | grep -v KUBE | iptables-restore
