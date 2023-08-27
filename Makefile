@@ -16,3 +16,6 @@ post_install:
 
 control_plane:
 	ansible-playbook playbooks/control_plane.yaml
+
+k8s_flush:
+	ansible-playbook playbooks/k8s_flush.yaml

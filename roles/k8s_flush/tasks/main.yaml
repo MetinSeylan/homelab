@@ -1,0 +1,24 @@
+- name: kubeadm reset
+  shell: kubeadm reset -f
+
+- name: docker prune
+  shell: docker image prune -a -f
+
+- name: restart docker
+  shell: systemctl restart docker
+
+- name: remove docker
+  shell: |
+    rm -rf ~/.kube
+
+- name: clear iptables
+  shell: |
+    iptables -F && iptables -X &&
+    iptables -t nat -F && iptables -t nat -X &&
+    iptables -t raw -F && iptables -t raw -X &&
+    iptables -t mangle -F && iptables -t mangle -X 
+
+- name: reboot
+  shell: reboot
+
+

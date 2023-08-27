@@ -1,5 +1,5 @@
 - name: Init Kubernetes Cluster
-  shell: kubeadm init --skip-phases=addon/kube-proxy
+  shell: kubeadm init --cri-socket unix:///run/containerd/containerd.sock
   args:
     creates: "/etc/kubernetes/admin.conf"
 

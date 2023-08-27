@@ -1,0 +1,5 @@
+- name: Post K8s Setup
+  hosts: "master,node1,node2,node3,node4"
+  become: true
+  roles:
+    - k8s_flush
